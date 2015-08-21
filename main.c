@@ -41,18 +41,12 @@ PhoneBook *FindNameVer3(char *pName, PhoneBook *pHead){
     for(i = 0; i < LAST_NAME_COUNT; i++){
         if(nameHash != *(pHashArray + i)) continue;
 
-        //printf("O '%s' => 0x%08X, matching 0x%08X\n", pName, nameHash, *(pHashArray + i));
-
         ppbTmp = (pAddressArray + i);
         pbTmp = *ppbTmp;
-        //printf("+ '%s'\n", (char*)pbTmp->lastName);
 
         if(strcasecmp((char*)pName, (char*)pbTmp->lastName) != 0) continue;
 
-        //printf("Q i = %d, name = %s\n", i, (char*)pbTmp->lastName);
-
         return *(pAddressArray + i);
-        //return(  *(pAddressArray + LAST_NAME_COUNT - 1)  );
     }
 
     return NULL;
@@ -98,7 +92,6 @@ int main(void){
         t_end = clock();
         t_spent = (double)(t_end - t_begin) / CLOCKS_PER_SEC;
         printf("Ver %d: total time is %f sec \n", c, t_spent / (double)repeatCount);
-        //printf("Ver %d: total time is %f sec \n", c, t_spent);
 
         if(found == NULL){
             printf("name not found\n\n");
